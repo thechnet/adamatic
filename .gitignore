@@ -1,0 +1,5 @@
+.vscode*
+desktop.ini
+.DS_Store
+
+private

@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
+
+:root {
+	--width: 350px;
+	--container-height: 30px;
+	--perimeter-padding: 10px 12px 10px 10px;
+	--adam-blue: rgb(164, 215, 210);
+	--adam-navy: rgb(76, 101, 134);
+	--adam-navy-dark: rgb(58, 76, 101);
+	--adam-offwhite: rgb(240, 240, 240);
+	--adam-gray: rgb(127, 127, 127);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Open Sans', sans-serif;
+}
+
+body {
+	width: var(--width);
+}
+
+.header {
+	background-color: var(--adam-blue);
+	padding: var(--perimeter-padding);
+	font-size: 12pt;
+}
+
+.branding {
+	float: right;
+	color: var(--adam-gray)
+}
+
+.content {
+	background-color: var(--adam-offwhite);
+	padding: var(--perimeter-padding);
+}
+
+.container {
+	width: calc(var(--width) - 22px);
+	height: var(--container-height);
+	margin-bottom: 10px;
+	display: inline-flex;
+	align-items: center;
+	background-color: white;
+	border-style: solid;
+	border-color: var(--adam-gray);
+	border-width: 1px;
+}
+
+input[type=email], input[type=password], input[type=text] {
+	width: 100%;
+	height: 100%;
+	padding-left: 7px;
+	border: none;
+}
+
+#visibility {
+	all: unset;
+	height: 100%;
+	width: 60px;
+	color: var(--adam-navy);
+	text-align: center;
+	font-size: small;
+}
+
+#visibility:hover {
+	background-color: var(--adam-navy-dark);
+	color: white;
+}
+
+#save {
+	all: unset;
+	height: var(--container-height);
+	background-color: var(--adam-navy);
+	color: white;
+	width: 100px;
+	font-size: small;
+	text-align: center;
+}
+
+#save:hover {
+	background-color: var(--adam-navy-dark);
+}
