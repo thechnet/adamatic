@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+### Fixed
+
+- Organisation selection is language-dependent.
+
 ## [1.0.0] - 2023-11-03
 
 ### Added
