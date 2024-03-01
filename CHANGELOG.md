@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased]
+## [1.1.0] - 2024-03-01
 
 ### Added
 
@@ -18,6 +18,7 @@
 
 - Initial release.
 
-[Unreleased]: https://github.com/thechnet/adamatic/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/thechnet/adamatic/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/thechnet/adamatic/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/thechnet/adamatic/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/thechnet/adamatic/tree/v1.0.0
