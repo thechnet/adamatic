@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+### Added
+
+- Option to remember the ADAM dashboard view across sessions.
+
 ## [1.0.1] - 2023-11-21
 
 ### Fixed

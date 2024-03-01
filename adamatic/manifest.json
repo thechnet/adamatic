@@ -16,6 +16,10 @@
 		{
 			"matches": ["*://unibas.login.eduid.ch/idp/profile/SAML2/Redirect/SSO?execution=*"],
 			"js": ["src/content_scripts/eduid.js"]
+		},
+		{
+			"matches": ["*://adam.unibas.ch/ilias.php*"],
+			"js": ["src/content_scripts/ilias.js"]
 		}
 	],
 	"action": {
