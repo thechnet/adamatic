@@ -14,4 +14,4 @@ Alternatively, you can install it from source:
 
 - Download this repository and move it to a permanent location.
 - In your Chromium-based browser, open the extensions page and activate the developer mode.
-- Click *Load unpacked*, and select the "adamatic" directory *within* the downloaded repository.
+- Click *Load unpacked* and select the "adamatic" directory *within* the downloaded repository.

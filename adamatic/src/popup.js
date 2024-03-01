@@ -1,33 +1,33 @@
-let DOM_username = document.getElementById('username');
-let DOM_password = document.getElementById('password');
-let DOM_visibility = document.getElementById('visibility');
-let DOM_save = document.getElementById('save');
+const $USERNAME = document.getElementById('username');
+const $PASSWORD = document.getElementById('password');
+const $VISIBILITY = document.getElementById('visibility');
+const $SAVE = document.getElementById('save');
 
-chrome.storage.sync.get(null).then((result) => {
-	if (result.username)
-		DOM_username.value = result.username;
-	if (result.password)
-		DOM_password.value = result.password;
+chrome.storage.sync.get(null).then((storage) => {
+	if (storage.username)
+		$USERNAME.value = storage.username;
+	if (storage.password)
+		$PASSWORD.value = storage.password;
 });
 
 /*
 Click event handlers.
 */
 
-DOM_visibility.onclick = function() {
-	if (DOM_visibility.innerHTML == 'Show') {
-		DOM_password.setAttribute('type', 'text');
-		DOM_visibility.innerHTML = 'Hide';
+$VISIBILITY.onclick = function() {
+	if ($VISIBILITY.innerHTML == 'Show') {
+		$PASSWORD.setAttribute('type', 'text');
+		$VISIBILITY.innerHTML = 'Hide';
 	} else {
-		DOM_password.setAttribute('type', 'password');
-		DOM_visibility.innerHTML = 'Show';
+		$PASSWORD.setAttribute('type', 'password');
+		$VISIBILITY.innerHTML = 'Show';
 	}
 }
 
-DOM_save.onclick = function() {
+$SAVE.onclick = function() {
 	chrome.storage.sync.set({
-		'username': DOM_username.value,
-		'password': DOM_password.value
+		'username': $USERNAME.value,
+		'password': $PASSWORD.value
 	});
 	window.close();
 }
