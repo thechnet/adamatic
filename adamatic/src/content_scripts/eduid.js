@@ -1,9 +1,10 @@
 const PREFIX = 'ADAMatic (eduid): ';
+const MISSING_CREDENTIALS_MESSAGE = 'Please provide your edu-ID credentials via the extension popup, then reload this page.';
 
 function clickLogin() {
 	const $LOGIN = document.getElementById('login-button');
 	if (!$LOGIN)
-		alert(PREFIX + 'Cannot find login button.');
+		alert(PREFIX + 'Cannot find the login button. Try reloading the page; if the issue persists, please contact the developer.');
 	else
 		$LOGIN.click();
 }
@@ -15,7 +16,7 @@ if ($PASSWORD) {
 			$PASSWORD.value = storage.password;
 			clickLogin();
 		} else {
-			alert(PREFIX + 'No stored password.');
+			alert(PREFIX + MISSING_CREDENTIALS_MESSAGE);
 		}
 	});
 } else {
@@ -28,7 +29,7 @@ if ($PASSWORD) {
 				$USERNAME.value = storage.username;
 				clickLogin();
 			} else {
-				alert(PREFIX + 'No stored email.');
+				alert(PREFIX + MISSING_CREDENTIALS_MESSAGE);
 			}
 		});
 	}
