@@ -1,17 +1,17 @@
+![](adamatic/img/icon128.png)
+
 # ADAMatic
 
-The SWITCHaai login process for ADAM, the learning management system of the University of Basel, can get annoying when one is required to repeat it multiple times throughout a typical day. ADAMatic removes this inconvenience by automating the login process.
+ADAMatic automates the sequence of interactions required to log in to ADAM, the learning management system of the University of Basel. Additionally, it adds some small tweaks to the website, such as customizable course labels and an option to remember the previously selected course list.
 
-Once ADAMatic is installed, provide your SWITCH edu-ID credentials in the extension's popup window. Now, whenever you visit the ADAM login page (https://adam.unibas.ch/login.php), ADAMatic automatically performs the login process for you.
+![](branding/screenshot-2.png)
 
-Your credentials are stored and, at least with Chrome, synchronized between your devices by your browser. They are removed when you remove the extension, and ADAMatic never interacts with them outside the intended functionality. **Be aware that your credentials are stored unencrypted!** That is the trade-off you make for increased convenience – use this extension at your own risk.
+Once ADAMatic is installed, enter your SWITCH edu-ID credentials in the extension's popup window to enable the automatic login. **Note that your credentials are stored unencrypted**, and that, at least with Chrome, they are synchronized between your devices by your browser.
+
+ADAMatic never interacts with your credentials outside of the intended functionality, and they are removed when you remove the extension.
 
 ## Installation
 
 ADAMatic is available [in the Chrome Web Store](https://chromewebstore.google.com/detail/falhcaokchhdmcihdbjkgmmmgkdiijpd).
 
-Alternatively, you can install it from source:
-
-- Download this repository and move it to a permanent location.
-- In your Chromium-based browser, open the extensions page and activate the developer mode.
-- Click *Load unpacked* and select the "adamatic" directory *within* the downloaded repository.
+Packages are available under [releases](https://github.com/thechnet/adamatic/releases).
