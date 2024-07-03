@@ -20,8 +20,11 @@ class Dashboard {
 	}
 
 	requireDashboard() {
-		if (this.urlParameters.get('baseClass') !== 'ilDashboardGUI')
-			throw 'Not on "Dashboard" page';
+		if (
+			this.urlParameters.get('baseClass').toLowerCase() !== 'ildashboardgui' ||
+			(this.urlParameters.has('cmdClass') && this.urlParameters.get('cmdClass').toLowerCase() !== 'ildashboardgui')
+		)
+			throw PREFIX + 'Not at course list';
 	}
 
 	redirectOrRememberView() {
