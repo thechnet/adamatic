@@ -35,5 +35,11 @@
 			"js": [ "src/content_scripts/ilias.js" ]
 		}
 	],
-	"permissions": [ "storage" ]
+	"permissions": [ "storage" ],
+	"web_accessible_resources": [
+		{
+			"resources": [ "img/icon128.png" ],
+			"matches": [ "*://unibas.login.eduid.ch/*" ]
+		}
+	]
 }

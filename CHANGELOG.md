@@ -1,5 +1,15 @@
 # Changelog
 
+## [Unreleased] - 2024-07-12
+
+### Added
+- Users are now called to check their edu-ID credentials if a problem is detected during the login process.
+
+### Changed
+
+- Updated to support the new edu-ID login page.
+- Users are now motivated to enter their edu-ID credentials via a hint on the edu-ID login page instead of browser alerts.
+
 ## [1.3.0] - 2024-07-03
 
 ### Changed
