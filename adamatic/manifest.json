@@ -16,6 +16,9 @@
 		},
 		"default_popup": "src/popup.html"
 	},
+	"background": {
+		"service_worker": "src/worker.js"
+	},
 	"content_scripts": [
 		{
 			"matches": [ "*://adam.unibas.ch/login.php*" ],
