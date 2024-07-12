@@ -6,21 +6,18 @@
 </head>
 <body>
 	<div class="header">
-		<span class="title">SWITCH edu-ID</span>
-		<span class="branding">ADAMatic</span>
+		<img src="../img/edu-id.png">
+		<img src="../img/icon128.png" title="ADAMatic">
 	</div>
 	<div class="content">
-		<div class="username">
-			<span class="container">
-				<input type="email" placeholder="Email" id="username" autofocus/>
-			</span>
-		</div>
-		<div class="password">
-			<span class="container">
-				<input type="password" placeholder="Password" id="password"/>
-				<button id="visibility">Show</button>
-			</span>
-		</div>
+		<span class="container">
+			<input placeholder="Email" type="email" id="username" autofocus/>
+		</span>
+		<span class="container">
+			<input placeholder="Password" type="password" id="password"/>
+			<button title="Show" id="show"><img src="../img/show.png"></button>
+			<button title="Hide" id="hide"><img src="../img/hide.png"></button>
+		</span>
 		<button id="save">Save</button>
 	</div>
 	<script src="popup.js"></script>

@@ -9,6 +9,7 @@
 
 - Updated to support the new edu-ID login page.
 - Users are now motivated to enter their edu-ID credentials via a hint on the edu-ID login page instead of browser alerts.
+- Redesigned the popup window to reflect the edu-ID login design.
 
 ## [1.3.0] - 2024-07-03
 

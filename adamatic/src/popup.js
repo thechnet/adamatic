@@ -1,6 +1,7 @@
 const $USERNAME = document.getElementById('username');
 const $PASSWORD = document.getElementById('password');
-const $VISIBILITY = document.getElementById('visibility');
+const $SHOW = document.getElementById('show');
+const $HIDE = document.getElementById('hide');
 const $SAVE = document.getElementById('save');
 
 chrome.storage.sync.get(null).then((storage) => {
@@ -14,17 +15,19 @@ chrome.storage.sync.get(null).then((storage) => {
 Click event handlers.
 */
 
-$VISIBILITY.onclick = function() {
-	if ($VISIBILITY.innerHTML == 'Show') {
-		$PASSWORD.setAttribute('type', 'text');
-		$VISIBILITY.innerHTML = 'Hide';
-	} else {
-		$PASSWORD.setAttribute('type', 'password');
-		$VISIBILITY.innerHTML = 'Show';
-	}
+$SHOW.onclick = () => {
+	$PASSWORD.setAttribute('type', 'text');
+	$SHOW.style.display = 'none';
+	$HIDE.style.display = 'block';
 }
 
-$SAVE.onclick = function() {
+$HIDE.onclick = () => {
+	$PASSWORD.setAttribute('type', 'password');
+	$HIDE.style.display = 'none';
+	$SHOW.style.display = 'block';
+}
+
+$SAVE.onclick = () => {
 	chrome.storage.sync.set({
 		'username': $USERNAME.value,
 		'password': $PASSWORD.value

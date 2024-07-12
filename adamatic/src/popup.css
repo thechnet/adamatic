@@ -1,85 +1,87 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
 :root {
 	--width: 350px;
+	--perimeter-padding: 15px;
 	--container-height: 30px;
-	--perimeter-padding: 10px 12px 10px 10px;
-	--adam-blue: rgb(164, 215, 210);
-	--adam-navy: rgb(76, 101, 134);
-	--adam-navy-dark: rgb(58, 76, 101);
-	--adam-offwhite: rgb(249, 249, 249);
-	--adam-gray: rgb(127, 127, 127);
+	--blue: #285f82;
+	--blue-hover: #297f99;
+	--blue-focus: #73cbe5;
 }
 
 * {
 	margin: 0;
 	padding: 0;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Poppins', sans-serif;
 }
 
 body {
 	width: var(--width);
+	padding: var(--perimeter-padding);
 }
 
 .header {
-	background-color: var(--adam-blue);
-	padding: var(--perimeter-padding);
-	font-size: 12pt;
-}
-
-.branding {
-	float: right;
-	color: var(--adam-gray)
-}
-
-.content {
-	background-color: var(--adam-offwhite);
-	padding: var(--perimeter-padding);
+	height: 2.5em;
+	margin-bottom: var(--perimeter-padding);
+	display: flex;
+	justify-content: space-between;
 }
 
 .container {
-	width: calc(var(--width) - 22px);
 	height: var(--container-height);
+	display: flex;
 	margin-bottom: 10px;
-	display: inline-flex;
-	align-items: center;
-	background-color: white;
-	border-style: solid;
-	border-color: var(--adam-gray);
-	border-width: 1px;
+	border-bottom: 1px solid var(--blue);
 }
 
-input[type=email], input[type=password], input[type=text] {
+.container input {
 	width: 100%;
-	height: 100%;
-	padding-left: 7px;
+	height: 100%; /* Ensure .container and input borders align. */
+	padding: 0 7px 0 0;
 	border: none;
+	outline: none;
 }
 
-#visibility {
+.container input:focus {
+	border-bottom: 1px solid var(--blue-focus);
+}
+
+.container ::placeholder {
+	color: #dcdcdc;
+	opacity: 1;
+}
+
+.content {
+	text-align: right;
+}
+
+.container button {
 	all: unset;
-	height: 100%;
-	width: 60px;
-	color: var(--adam-navy);
-	text-align: center;
-	font-size: small;
 }
 
-#visibility:hover {
-	background-color: var(--adam-navy-dark);
-	color: white;
+.container img {
+	display: block;
+	height: 65%;
+	width: 19.5px; /* Firefox. */
+	margin: 0 .5em 0 .5em;
+}
+
+#hide {
+	display: none;
 }
 
 #save {
 	all: unset;
+	width: 55px;
 	height: var(--container-height);
-	background-color: var(--adam-navy);
-	color: white;
-	width: 100px;
+	margin-top: 10px;
+	border-radius: var(--container-height);
+	background-color: var(--blue);
 	font-size: small;
 	text-align: center;
+	color: white;
 }
 
 #save:hover {
-	background-color: var(--adam-navy-dark);
+	background-color: var(--blue-hover);
 }
