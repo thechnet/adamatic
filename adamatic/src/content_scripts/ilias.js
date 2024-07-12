@@ -32,7 +32,7 @@ class Dashboard {
 
 		/* Abort if a view was requested. */
 		if (requestedView) {
-			console.log(PREFIX + `Remembering "${requestedView}"`)
+			console.info(PREFIX + `Remembering "${requestedView}"`)
 			chrome.storage.sync.set({ 'view': requestedView });
 			return;
 		}
@@ -45,9 +45,9 @@ class Dashboard {
 				let dataAction = views[i].getAttribute('data-action');
 				if (new URLSearchParams(dataAction).get('show') === STORAGE.view) {
 					if (views[i].classList.contains('engaged')) {
-						console.log(PREFIX + `Requested view is already engaged, not redirecting`);
+						console.info(PREFIX + `Requested view is already engaged, not redirecting`);
 					} else {
-						console.log(PREFIX + `Redirecting to "${STORAGE.view}"`);
+						console.info(PREFIX + `Redirecting to "${STORAGE.view}"`);
 						window.location.replace(dataAction);
 					}
 				}
@@ -85,7 +85,7 @@ class Dashboard {
 
 			let components = $anchor.innerHTML.split(' – ');
 			if (components.length != 2) {
-				console.log(PREFIX + `Skipping item with unrecognized format "${$anchor.innerHTML}"`)
+				console.info(PREFIX + `Skipping item with unrecognized format "${$anchor.innerHTML}"`)
 				continue;
 			}
 			let [courseNumber, courseName] = components;

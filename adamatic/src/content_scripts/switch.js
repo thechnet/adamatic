@@ -10,6 +10,6 @@ for (let i=0; i<$ORGANISATIONS.length; ++i) {
 }
 
 if (!$ORGANISATION)
-	alert(PREFIX + 'Cannot find the organisation. Try reloading the page; if the issue persists, please contact the developer.');
+	alert(PREFIX + `Cannot find '${ORGANISATION}'. Try reloading the page; if the issue persists, please contact the developer.`);
 else
 	$ORGANISATION.click();
