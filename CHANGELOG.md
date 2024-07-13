@@ -3,6 +3,7 @@
 ## [2.0.0] - 2024-07-13
 
 ### Added
+
 - Users are now called to check their edu-ID credentials if a problem is detected during the login process.
 
 ### Changed

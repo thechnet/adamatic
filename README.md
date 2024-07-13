@@ -1,4 +1,4 @@
-![](adamatic/img/icon128.png)
+![](extension/img/icon128.png)
 
 # ADAMatic
 

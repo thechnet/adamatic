@@ -48,7 +48,7 @@ class Dashboard {
 						console.info(PREFIX + `Requested view is already engaged, not redirecting`);
 					} else {
 						console.info(PREFIX + `Redirecting to "${STORAGE.view}"`);
-						window.location.replace(dataAction);
+						window.location.replace(new URL(dataAction, window.location.origin).toString());
 					}
 				}
 			}
@@ -57,7 +57,7 @@ class Dashboard {
 
 	injectStylesheet() {
 		let style = document.createElement('style');
-		style.innerText = STYLESHEET;
+		style.textContent = STYLESHEET;
 		document.head.appendChild(style);
 	}
 
@@ -295,8 +295,14 @@ let updateNickname = id => {
 	STORAGE.labels[id].nickname = nickname;
 	chrome.storage.sync.set({ 'labels': STORAGE.labels });
 
-	let innerHTML = nickname ? `<i>${nickname}</i>` : Dashboard.getDefaultName(id);
-	document.getElementById(`adamaticLabel${id}`).innerHTML = innerHTML;
+	let $label = document.getElementById(`adamaticLabel${id}`);
+	if (nickname) {
+		let $i = document.createElement('i');
+		$i.textContent = nickname;
+		$label.replaceChildren($i);
+	} else {
+		$label.textContent = Dashboard.getDefaultName(id);
+	}
 };
 
 let STORAGE; chrome.storage.sync.get().then((storage) => { STORAGE = storage || {}; ready(); });
