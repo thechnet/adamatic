@@ -107,7 +107,18 @@ class Dashboard {
 				.children[1] /* dropdown-menu ul */ ;
 			$dropdown.insertAdjacentHTML('afterbegin', dropdownButton(courseNumber));
 			let $customize = document.getElementById(`adamaticCustomize${courseNumber}`);
-			$customize.onclick = function() { document.getElementById(`adamaticCustomizationPanel${courseNumber}`).style.display = 'block'; }
+			$customize.onclick = function() {
+				let $panel = document.getElementById(`adamaticCustomizationPanel${courseNumber}`);
+				if ($panel.style.display === 'block') {
+					$panel.style.display = 'none';
+					return;
+				}
+				let panels = document.getElementsByClassName('adamaticCustomizationPanel');
+				for (let i = 0; i < panels.length; ++i) {
+					panels[i].style.display = 'none';
+				}
+				$panel.style.display = 'block';
+			}
 
 			/* Panel */
 

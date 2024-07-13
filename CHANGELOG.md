@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+### Changed
+
+- Improved behavior of *Customize…* button.
+
 ## [2.0.0] - 2024-07-13
 
 ### Added
