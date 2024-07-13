@@ -16,17 +16,19 @@
 	<noscript>
 		This website requires JavaScript.
 	</noscript>
-	<main class="markdown">
+	<main id="main" class="markdown">
 		
-		<div id="header">
+		<div id="header" onclick="window.location.href = location.pathname;">
 			<img src="extension/img/icon128.png">
 			<span>ADAMatic</span>
 		</div>
 		
 		<div id="changes">
-			<h2>Changes in <span id="changes-version"></span></h2>
+			<div id="changes-header">
+				<h2 id="changes-title"></h2>
+				<span id="changes-dismiss" onclick="document.getElementById('changes').style.display = 'none';">&times;</span>
+			</div>
 			<div id="changelog"></div>
-			<a class="secondary" href="https://thechnet.github.io/adamatic">Dismiss</a>
 		</div>
 		
 		<div id="abstract"></div>
@@ -38,10 +40,11 @@
 		</div>
 
 		<div id="highlights"></div>
+
+		<footer>
+			&copy; <a href="http://chnet.bplaced.net/">chnet</a>
+		</footer>
 	</main>
-	<footer>
-		&copy; <a href="http://chnet.bplaced.net/">chnet</a>
-	</footer>
 </body>
 
 </html>

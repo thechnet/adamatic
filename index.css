@@ -37,6 +37,10 @@ body {
 	color: var(--color);
 }
 
+main {
+	opacity: 0;
+}
+
 .markdown {
 	box-sizing: border-box;
 	min-width: 200px;
@@ -59,6 +63,7 @@ body {
 	border-bottom: 2px solid var(--separator-color);
 	padding-bottom: 1rem;
 	margin-bottom: 2.5rem;
+	cursor: pointer;
 }
 
 #header img {
@@ -70,8 +75,27 @@ body {
 	display: none;
 	background-color: var(--changes-background-color);
 	font-size: medium;
-	padding: .1rem 1.5rem .5rem 1.5rem;
+	padding: .05rem 1.5rem .5rem 1.5rem;
 	border-radius: .5rem;
+}
+
+#changes-header {
+	height: 3.25rem;
+	display: flex;
+	justify-content: space-between;
+}
+
+#changes-dismiss {
+	font-size: 2rem;
+	font-weight: 200;
+	color: var(--button-background-color);
+	transition: color .1s ease-in-out;
+	padding: .6rem 0 0 0;
+	cursor: pointer;
+}
+
+#changes-dismiss:hover {
+	color: var(--button-background-color-hover);
 }
 
 #abstract {
@@ -142,8 +166,8 @@ footer {
 	text-align: center;
 	font-size: 1rem;
 	opacity: .25;
-	padding-top: 3rem;
-	padding-bottom: 3rem;
+	padding-top: 5.8rem;
+	padding-bottom: .2rem;
 }
 
 footer a {

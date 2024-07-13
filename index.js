@@ -30,7 +30,10 @@ function parseReadme(text) {
 
 function parseChangelog(text) {
 	let versions = {
-		latest: undefined
+		latest: undefined,
+		unreleased: {
+			lines: []
+		}
 	};
 
 	let lines = text.split('\n');
@@ -41,16 +44,22 @@ function parseChangelog(text) {
 			continue;
 		}
 
+		let unreleasedDeclaration = lines[i].match(/^## \[Unreleased\]/i);
+		if (unreleasedDeclaration) {
+			currentVersion = 'unreleased';
+			continue;
+		}
+
 		let versionDeclaration = lines[i].match(/^## \[(\d+\.\d+\.\d+)\] - (\d{4}-\d{2}-\d{2})$/);
 		if (versionDeclaration) {
-			if (!currentVersion) {
-				versions.latest = versionDeclaration[1];
-			}
 			currentVersion = versionDeclaration[1];
 			versions[currentVersion] = {
 				date: versionDeclaration[2],
 				lines: []
 			};
+			if (!versions.latest) {
+				versions.latest = currentVersion;
+			}
 			continue;
 		}
 
@@ -81,18 +90,26 @@ function renderChanges(text, requestedVersion) {
 		console.error('Requested version not in parsed versions.');
 		return;
 	}
-
-	document.getElementById('changes-version').innerText = requestedVersion;
-
-	document.getElementById('changelog').innerHTML = marked.parse(versions[requestedVersion].lines.join('\n'));
-	document.getElementById('changes').style.display = 'block';
+	
+	if (versions[requestedVersion].lines.length) {
+		document.getElementById('changes-title').textContent = requestedVersion === 'unreleased' ? 'Upcoming Changes' : 'What\'s New in ' + requestedVersion;
+		document.getElementById('changelog').innerHTML = marked.parse(versions[requestedVersion].lines.join('\n'));
+		
+		document.getElementById('changes').style.display = 'block';
+	}
 }
 
 let requestedVersion = new URLSearchParams(window.location.search).get('changes');
 
 async function main() {
 	renderReadme(await (await fetch(FETCH_README)).text());
-	renderChanges(await (await fetch(FETCH_CHANGELOG)).text(), requestedVersion);
+	if (requestedVersion) {
+		renderChanges(await (await fetch(FETCH_CHANGELOG)).text(), requestedVersion);
+	}
+
+	Promise.all(Array.from(document.images).filter(img => !img.complete).map(img => new Promise(resolve => { img.onload = img.onerror = resolve; }))).then(() => {
+		document.getElementById('main').style.opacity = 1;
+	});
 }
 
 main();
