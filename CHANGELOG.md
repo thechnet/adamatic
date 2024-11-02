@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- Courses are now sorted alphabetically.
+
 ### Changed
 
 - Improved behavior of *Customize…* button.

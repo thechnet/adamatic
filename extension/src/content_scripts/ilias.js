@@ -72,13 +72,25 @@ class Dashboard {
 	}
 
 	modifyLabels() {
-		let items = document
-			.getElementsByClassName('panel-primary')[0]
-			.children[1] /* panel-body */
-			.children;
+		/* Collect courses. */
 		
+		let $courses = document.createElement('div');
+		$courses.setAttribute('id', 'adamaticCourses');
+		
+		let $panel = document
+			.getElementsByClassName('panel-primary')[0]
+			.children[1];
+		let items = Array.from($panel.children);
 		for (let i=2; i<items.length; ++i) {
-			let $mediaBody = items[i]
+			$courses.appendChild(items[i]);
+		}
+		
+		$panel.appendChild($courses);
+		
+		/* Modify labels. */
+		
+		for (let i=0; i<$courses.children.length; ++i) {
+			let $mediaBody = $courses.children[i]
 				.children[0] /* media */
 				.children[1];
 			let $anchor = $mediaBody
@@ -112,7 +124,7 @@ class Dashboard {
 			$customize.onclick = function() {
 				let $panel = document.getElementById(`adamaticCustomizationPanel${courseNumber}`);
 				if ($panel.style.display === 'block') {
-					$panel.style.display = 'none';
+					Dashboard.getCloseCustomizationPanel(courseNumber).click();
 					return;
 				}
 				let panels = document.getElementsByClassName('adamaticCustomizationPanel');
@@ -127,6 +139,7 @@ class Dashboard {
 			$dropdownDiv.insertAdjacentHTML('afterend', customizationPanel(courseNumber));
 			Dashboard.getCloseCustomizationPanel(courseNumber).onclick = () => {
 				Dashboard.getCustomizationPanel(courseNumber).style.display = 'none';
+				this.sortLabels();
 			}
 			let swatches = Dashboard.getSwatches(courseNumber);
 			for (let i=0; i<LABEL_STYLES.length; ++i) {
@@ -138,6 +151,36 @@ class Dashboard {
 			setStyle(courseNumber, style);
 			updateNickname(courseNumber);
 		}
+
+		this.sortLabels();
+	}
+
+	sortLabels() {
+		let $courses = document.getElementById('adamaticCourses');
+
+		let items = Array.from($courses.children);
+		items.sort((a, b) => {
+			let $aLabel = a
+				.children[0] /* media */
+				.children[1] /* media-body */
+				.children[0] /* il-item-title */
+				.children[0] /* a */
+				.children[1]; /* span */
+			
+			let $bLabel = b
+				.children[0]
+				.children[1]
+				.children[0]
+				.children[0]
+				.children[1];
+			
+			return $aLabel.textContent.localeCompare($bLabel.textContent);
+		});
+
+		while ($courses.firstChild) {
+			$courses.removeChild($courses.firstChild);
+		}
+		items.forEach(item => $courses.appendChild(item));
 	}
 
 	getStyle(courseNumber) {
