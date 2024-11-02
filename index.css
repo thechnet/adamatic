@@ -29,7 +29,12 @@
 	}
 }
 
+html {
+	background-color: var(--background-color-top);
+}
+
 body {
+	margin: 0;
 	background-image: linear-gradient(var(--background-color-top), var(--background-color-bottom));
 	background-attachment: fixed;
 	font-family: 'Inter', sans-serif;

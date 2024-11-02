@@ -10,7 +10,7 @@
 
 ### Added
 
-- Users are now called to check their edu-ID credentials if a problem is detected during the login process.
+- Users are now asked to check their edu-ID credentials if a problem is detected during the login process.
 
 ### Changed
 

@@ -22,16 +22,16 @@
 	"content_scripts": [
 		{
 			"matches": [ "*://adam.unibas.ch/login.php*" ],
-			"js": [ "src/content_scripts/unibas.js" ],
+			"js": [ "src/content_scripts/initiate_login.js" ],
 			"run_at": "document_start"
 		},
 		{
 			"matches": [ "*://wayf.switch.ch/SWITCHaai/WAYF?entityID=https%3A%2F%2Fadam.unibas.ch*" ],
-			"js": [ "src/content_scripts/switch.js" ]
+			"js": [ "src/content_scripts/select_organisation.js" ]
 		},
 		{
 			"matches": [ "*://unibas.login.eduid.ch/idp/profile/SAML2/Redirect/SSO?execution=*" ],
-			"js": [ "src/content_scripts/eduid.js" ]
+			"js": [ "src/content_scripts/login.js" ]
 		},
 		{
 			"matches": [ "*://adam.unibas.ch/ilias.php*" ],

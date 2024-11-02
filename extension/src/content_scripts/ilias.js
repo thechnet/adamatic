@@ -1,10 +1,13 @@
-const PREFIX = 'ADAMatic (ilias): ';
+"use strict";
 
 class Dashboard {
 	static #defaultNames = {};
 
 	constructor() {
-		this.requireDashboard();
+		if (!this.atCourseList()) {
+			console.info('ADAMatic: Not at course list, aborting')
+			return;
+		}
 
 		this.redirectOrRememberView();
 
@@ -19,12 +22,11 @@ class Dashboard {
 		return this._urlParameters;
 	}
 
-	requireDashboard() {
-		if (
-			this.urlParameters.get('baseClass').toLowerCase() !== 'ildashboardgui' ||
-			(this.urlParameters.has('cmdClass') && this.urlParameters.get('cmdClass').toLowerCase() !== 'ildashboardgui')
-		)
-			throw PREFIX + 'Not at course list';
+	atCourseList() {
+		return (
+			this.urlParameters.get('baseClass').toLowerCase() === 'ildashboardgui' &&
+			(!this.urlParameters.has('cmdClass') || this.urlParameters.get('cmdClass').toLowerCase() === 'ildashboardgui')
+		);
 	}
 
 	redirectOrRememberView() {
@@ -32,7 +34,7 @@ class Dashboard {
 
 		/* Abort if a view was requested. */
 		if (requestedView) {
-			console.info(PREFIX + `Remembering "${requestedView}"`)
+			console.info(`ADAMatic: Remembering "${requestedView}"`)
 			chrome.storage.sync.set({ 'view': requestedView });
 			return;
 		}
@@ -45,9 +47,9 @@ class Dashboard {
 				let dataAction = views[i].getAttribute('data-action');
 				if (new URLSearchParams(dataAction).get('show') === STORAGE.view) {
 					if (views[i].classList.contains('engaged')) {
-						console.info(PREFIX + `Requested view is already engaged, not redirecting`);
+						console.info(`ADAMatic: Requested view is already engaged, not redirecting`);
 					} else {
-						console.info(PREFIX + `Redirecting to "${STORAGE.view}"`);
+						console.info(`ADAMatic: Redirecting to "${STORAGE.view}"`);
 						window.location.replace(new URL(dataAction, window.location.origin).toString());
 					}
 				}
@@ -85,7 +87,7 @@ class Dashboard {
 
 			let components = $anchor.innerHTML.split(' – ');
 			if (components.length != 2) {
-				console.info(PREFIX + `Skipping item with unrecognized format "${$anchor.innerHTML}"`)
+				console.info(`ADAMatic: Skipping item with unrecognized format "${$anchor.innerHTML}"`)
 				continue;
 			}
 			let [courseNumber, courseName] = components;

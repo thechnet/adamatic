@@ -1,3 +1,5 @@
+"use strict";
+
 const $USERNAME = document.getElementById('username');
 const $PASSWORD = document.getElementById('password');
 const $SHOW = document.getElementById('show');
@@ -11,10 +13,6 @@ chrome.storage.sync.get(null).then((storage) => {
 		$PASSWORD.value = storage.password;
 });
 
-/*
-Click event handlers.
-*/
-
 $SHOW.onclick = () => {
 	$PASSWORD.setAttribute('type', 'text');
 	$SHOW.style.display = 'none';
@@ -23,8 +21,8 @@ $SHOW.onclick = () => {
 
 $HIDE.onclick = () => {
 	$PASSWORD.setAttribute('type', 'password');
-	$HIDE.style.display = 'none';
 	$SHOW.style.display = 'block';
+	$HIDE.style.display = 'none';
 }
 
 $SAVE.onclick = () => {
