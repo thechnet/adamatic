@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Fixed
+
+- Crash when displaying course lists containing entries with an unrecognized format.
+
 ## [2.1.0] - 2024-11-03
 
 ### Added

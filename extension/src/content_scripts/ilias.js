@@ -156,26 +156,22 @@ class Dashboard {
 	}
 
 	sortLabels() {
-		let $courses = document.getElementById('adamaticCourses');
-
-		let items = Array.from($courses.children);
-		items.sort((a, b) => {
-			let $aLabel = a
+		function getSortString(child) {
+			let $anchor = child
 				.children[0] /* media */
 				.children[1] /* media-body */
 				.children[0] /* il-item-title */
 				.children[0] /* a */
-				.children[1]; /* span */
-			
-			let $bLabel = b
-				.children[0]
-				.children[1]
-				.children[0]
-				.children[0]
-				.children[1];
-			
-			return $aLabel.textContent.localeCompare($bLabel.textContent);
-		});
+			if ($anchor.children.length == 2) {
+				return $anchor.children[1].textContent;
+			}
+			return 'z' + $anchor.textContent;
+		}
+
+		let $courses = document.getElementById('adamaticCourses');
+		
+		let items = Array.from($courses.children);
+		items.sort((a, b) => getSortString(a).localeCompare(getSortString(b)));
 
 		while ($courses.firstChild) {
 			$courses.removeChild($courses.firstChild);
