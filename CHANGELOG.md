@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Added
+
+- Users can now set separate strings for sorting and displaying courses.
+
 ### Fixed
 
 - Crash when displaying course lists containing entries with an unrecognized format.

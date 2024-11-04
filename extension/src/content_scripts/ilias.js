@@ -110,7 +110,7 @@ class Dashboard {
 
 			$anchor.innerHTML = '';
 			$anchor.insertAdjacentHTML('afterbegin',
-				`<span>${courseNumber}</span><span class="adamaticLabel" id="adamaticLabel${courseNumber}"></span>`
+				`<span>${courseNumber}</span><span class="adamaticLabel" id="adamaticLabel${courseNumber}" data-adamaticSort=""></span>`
 			);
 
 			/* 'Customize' button. */
@@ -163,9 +163,9 @@ class Dashboard {
 				.children[0] /* il-item-title */
 				.children[0] /* a */
 			if ($anchor.children.length == 2) {
-				return $anchor.children[1].textContent;
+				return $anchor.children[1].getAttribute('data-adamaticSort') + $anchor.children[1].textContent;
 			}
-			return 'z' + $anchor.textContent;
+			return 'zm' /* 'za' sorted before, 'zz' after */ + $anchor.textContent;
 		}
 
 		let $courses = document.getElementById('adamaticCourses');
@@ -272,6 +272,10 @@ const STYLESHEET = `
 	div.adamaticCustomizationPanel h3 {
 		margin-top: 0px;
 	}
+	div.adamaticCustomizationPanel .hint {
+		font-size: small;
+		opacity: .75;
+	}
 	span.adamaticSwatch {
 		display: inline-block;
 		width: 1.2em;
@@ -314,7 +318,9 @@ let customizationPanel = id => {
 			<h3 style="margin-top: 1em">Title</h3>
 			<input type="text" class="adamaticNicknameInput" id="adamaticNickname${id}" placeholder="${Dashboard.getDefaultName(id)}" value="${Dashboard.getNickname(id) || ""}">
 			<br>
-			<button style="margin-top: 2em" id="adamaticCloseCustomizationPanel${id}" class="btn btn-default">Close</button>
+			<span class="hint">Use <code>#sort Display</code> to set separate strings for sorting and display</span>
+			<br>
+			<button style="margin-top: 1.5em" id="adamaticCloseCustomizationPanel${id}" class="btn btn-default">Close</button>
 		</div>
 	`;
 	return panel;
@@ -343,17 +349,29 @@ let setStyle = (id, style) => {
 };
 
 let updateNickname = id => {
-	let nickname = Dashboard.getNicknameInput(id).value;
-	STORAGE.labels[id].nickname = nickname;
+	let pattern = Dashboard.getNicknameInput(id).value;
+
+	STORAGE.labels[id].nickname = pattern;
 	chrome.storage.sync.set({ 'labels': STORAGE.labels });
 
 	let $label = document.getElementById(`adamaticLabel${id}`);
-	if (nickname) {
-		let $i = document.createElement('i');
-		$i.textContent = nickname;
-		$label.replaceChildren($i);
-	} else {
-		$label.textContent = Dashboard.getDefaultName(id);
+	$label.setAttribute('data-adamaticSort', '');
+	$label.textContent = Dashboard.getDefaultName(id);
+
+	if (pattern) {
+		let display = pattern;
+
+		let split = pattern.split(' ');
+		if (pattern.startsWith('#') && split.length >= 2) {
+			$label.setAttribute('data-adamaticSort', split[0].substring(1));
+			display = split.slice(1).join(' ');
+		}
+		
+		if (display.length > 0) {
+			let $i = document.createElement('i');
+			$i.textContent = display;
+			$label.replaceChildren($i);
+		}
 	}
 };
 
