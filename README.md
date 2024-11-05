@@ -11,7 +11,7 @@ Feature|Screenshot
 ---|---
 Enter your Switch edu-ID credentials in the extension's popup window to enable the automatic login. <br> <br> <i class="disclaimer">Be aware that ADAMatic doesn't encrypt your edu-ID credentials, and that depending on how your browser is configured, they may be synchronized between your devices through unencrypted channels.</i>|![](branding/login.png)
 Enable the **Remember** option to preserve the course list selection across sessions.|![](branding/remember.png)
-Use **Customize…** in the dropdown menu of any course to personalize its label.|![](branding/labels.png)
+Use **Customize…** in the dropdown menu of any course to personalize its label and adjust its sort order.|![](branding/labels.png)
 <!--@end-->
 
 ## Installation
