@@ -1,5 +1,6 @@
-.vscode*
+/*/
+!/branding/
+!/extension/
+
 desktop.ini
 .DS_Store
-
-private
