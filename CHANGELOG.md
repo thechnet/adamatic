@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased] - 2025-06-28
+
+### Changed
+
+- Updated to support ILIAS 9.10.
+
 ## [2.2.0] - 2024-11-05
 
 ### Added

@@ -90,7 +90,8 @@ class Dashboard {
 		/* Modify labels. */
 		
 		for (let i=0; i<$courses.children.length; ++i) {
-			let $mediaBody = $courses.children[i]
+			let $mediaBody = $courses
+				.children[i] /* il-item */
 				.children[0] /* media */
 				.children[1];
 			let $anchor = $mediaBody
@@ -115,9 +116,11 @@ class Dashboard {
 
 			/* 'Customize' button. */
 
-			let $dropdownDiv = $mediaBody
-				.children[1];
-			let $dropdown = $dropdownDiv
+			let $mediaBodyContent = $mediaBody
+				.children[1] /* il-item-actions */
+			let $dropdown = $mediaBodyContent
+				.children[0] /* l-bar_element */
+				.children[0] /* dropdown */
 				.children[1] /* dropdown-menu ul */ ;
 			$dropdown.insertAdjacentHTML('afterbegin', dropdownButton(courseNumber));
 			let $customize = document.getElementById(`adamaticCustomize${courseNumber}`);
@@ -136,7 +139,7 @@ class Dashboard {
 
 			/* Panel */
 
-			$dropdownDiv.insertAdjacentHTML('afterend', customizationPanel(courseNumber));
+			$mediaBodyContent.insertAdjacentHTML('afterend', customizationPanel(courseNumber));
 			Dashboard.getCloseCustomizationPanel(courseNumber).onclick = () => {
 				Dashboard.getCustomizationPanel(courseNumber).style.display = 'none';
 				this.sortLabels();
