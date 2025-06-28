@@ -253,6 +253,7 @@ for (let i=0; i<LABEL_STYLES.length; ++i) {
 
 const STYLESHEET = `
 	label.adamaticRemember {
+		margin-right: .25em;
 		display: inline-block;
 		font-size: smaller;
 	}
