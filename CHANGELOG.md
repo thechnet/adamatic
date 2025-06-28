@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased] - 2025-06-28
+## [3.0.0] - 2025-06-28
 
 ### Changed
 
@@ -72,7 +72,8 @@
 
 - Initial release.
 
-[Unreleased]: https://github.com/thechnet/adamatic/compare/v2.2.0...HEAD
+[Unreleased]: https://github.com/thechnet/adamatic/compare/v3.0.0...HEAD
+[3.0.0]: https://github.com/thechnet/adamatic/compare/v2.2.0...v3.0.0
 [2.2.0]: https://github.com/thechnet/adamatic/compare/v2.1.0...v2.2.0
 [2.1.0]: https://github.com/thechnet/adamatic/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/thechnet/adamatic/compare/v1.3.0...v2.0.0
